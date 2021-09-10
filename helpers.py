@@ -69,6 +69,12 @@ def unzip(zip_file: str, save_folder: str = "./data", new_file: str = "data.json
         return None
     
 def rm_all_file_in_folder(folder: str):
+    # check and create folder if not exists
+    if(not os.path.isdir(folder)):
+        os.mkdir( folder )
+        return False
+    
+    # rm all file in folder
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         

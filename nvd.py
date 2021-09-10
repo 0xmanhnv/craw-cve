@@ -14,7 +14,7 @@ def download_cve_data_feed(save_folder: str):
     
     return True
 
-def download_cve_data_feed(save_folder: str):
+def download_cpe_data_feed(save_folder: str):
     file_name_cpe_match_zip = "cpe_match.zip"
     file_name_cpe_match_json = "cpe_match.json"
     
