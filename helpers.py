@@ -1,4 +1,4 @@
-import os
+import os, shutil
 import requests
 import sys
 
@@ -47,3 +47,17 @@ def unzip(zip_file: str, save_folder: str = "./data", new_file: str = "data.json
         os.remove(zip_file)
     except:
         return None
+    
+def rm_all_file_in_folder(folder: str):
+    for filename in os.listdir(folder):
+        file_path = os.path.join(folder, filename)
+        try:
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+            
+            return True
+        except Exception as e:
+            print('Failed to delete %s. Reason: %s' % (file_path, e))
+            return False
